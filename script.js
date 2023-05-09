@@ -67,7 +67,8 @@ keys.forEach(key => {
 const handleClick = (letter) => {
     console.log('clicked', letter)
     if (letter === '<<'){
-        console.log('delete letter')
+        deleteLetter()
+        console.log(guessRows)
         return
     }
     if (letter == 'ENTER'){
@@ -88,3 +89,12 @@ const addLetter = (letter) => {
     }
 }
 
+const deleteLetter = () => {
+    if (currentTile > 0){
+        currentTile--
+        const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile)
+        tile.textContent = ''
+        guessRows[currentRow][currentTile] = ''
+        tile.setAttribute('data', '')
+    }
+}
